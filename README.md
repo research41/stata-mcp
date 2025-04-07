@@ -150,6 +150,8 @@ You can control UV usage with the `stata-vscode.useUvForPython` setting (default
    - **Run File**: Press `Ctrl+Shift+D` (or `Cmd+Shift+D` on Mac) to run the entire .do file
 3. View output in the editor panel
 
+> **Note:** When running Stata commands for the first time in a session, please be patient and wait for the server to start. This typically takes a few seconds. Subsequent commands will execute immediately.
+
 ## How It Works
 
 The extension creates a local MCP server that connects your editor to Stata, enabling:
