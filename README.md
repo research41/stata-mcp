@@ -68,7 +68,7 @@ If you prefer to install manually:
 3. For Cursor:
    - Run this command in a terminal: `cursor --install-extension path/to/stata-mcp-0.1.5.vsix`
 
-> **Note:** Initial installation requires setting up dependencies which may take up to 2 minutes to complete. Please be patient during this one-time setup process. All subsequent runs will start instantly.
+> **Note:** Initial installation requires setting up dependencies which may take up to 2 minutes to complete. Please be patient during this one-time setup process and wait for the server to start. All subsequent runs will start instantly.
 
 ## Extension Settings
 
@@ -149,8 +149,6 @@ You can control UV usage with the `stata-vscode.useUvForPython` setting (default
    - **Run Selection**: Select Stata code and press `Ctrl+Shift+Enter` (or `Cmd+Shift+Enter` on Mac)
    - **Run File**: Press `Ctrl+Shift+D` (or `Cmd+Shift+D` on Mac) to run the entire .do file
 3. View output in the editor panel
-
-> **Note:** When running Stata commands for the first time in a session, please be patient and wait for the server to start. This typically takes a few seconds. Subsequent commands will execute immediately.
 
 ## How It Works
 
