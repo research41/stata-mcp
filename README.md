@@ -117,8 +117,8 @@ This configuration allows Cursor's AI to communicate with the Stata MCP server t
 
 ## Requirements
 
-- Stata installed on your machine (Stata 14 or higher recommended)
-- Python 3.11 or higher (automatically installed locally if your existing Python version is < 3.11)
+- Stata 15 or higher installed on your machine
+- UV package manager (automatically installed or can be installed manually if needed)
 
 ## Python Environment Management
 
