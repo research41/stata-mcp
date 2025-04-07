@@ -122,7 +122,7 @@ This configuration allows Cursor's AI to communicate with the Stata MCP server t
 
 ## Python Environment Management
 
-The extension now includes advanced Python environment management:
+The extension includes sophisticated Python environment management:
 
 - **Version Check**: Checks if Python 3.11+ is available on your system
 - **Smart Installation**: Installs Python 3.11 locally only when your existing Python version is < 3.11
@@ -130,6 +130,8 @@ The extension now includes advanced Python environment management:
 - **Dependency Management**: Sets up a virtual environment with all required packages
 - **Cross-Platform Support**: Works on Windows, macOS, and Linux with platform-specific optimizations
 - **Fast Package Installation**: Uses [uv](https://github.com/astral-sh/uv), a Python packaging tool built in Rust that's much faster than pip
+- **Automatic Error Recovery**: Detects and attempts to recover from common installation issues
+- **Customizable Paths**: Allows specifying custom Python paths through settings
 
 This ensures the extension works reliably regardless of your existing Python setup and prevents version conflicts.
 
@@ -141,12 +143,16 @@ How uv is used:
 - **When Python is Missing**: If no Python installation is found, the extension uses uv to create a virtual environment and install dependencies
 - **When Python < 3.11**: If your system Python is older than 3.11, uv is used to manage a local Python installation
 - **For Dependency Management**: All Python package installations use uv for faster installation times
+- **Automatic Fallback**: If uv installation fails, the extension attempts to use pip as a fallback
+- **Manual Override**: You can specify a custom Python path in settings if needed
 
 You can control uv usage with the `stata-vscode.useUvForPython` setting (default: true).
 
 **No Action Required**: Everything is handled automatically - the extension will download and use uv as needed without any manual steps from you.
 
 **Performance Improvement**: Package installation with uv can be 10-100x faster than with pip, reducing the initial setup time significantly.
+
+**Trouble with uv?** See the [Troubleshooting](#common-installation-issues) section for guidance on resolving uv-related issues.
 
 ## Usage
 
