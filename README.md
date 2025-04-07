@@ -122,37 +122,25 @@ This configuration allows Cursor's AI to communicate with the Stata MCP server t
 
 ## Python Environment Management
 
-The extension includes sophisticated Python environment management:
+This extension uses [uv](https://github.com/astral-sh/uv), a fast Python package installer built in Rust, to manage Python dependencies. Key features:
 
-- **Version Check**: Checks if Python 3.11+ is available on your system
-- **Smart Installation**: Installs Python 3.11 locally only when your existing Python version is < 3.11
-- **Isolated Environment**: Uses a local installation that won't conflict with any existing Python installations
-- **Dependency Management**: Sets up a virtual environment with all required packages
-- **Cross-Platform Support**: Works on Windows, macOS, and Linux with platform-specific optimizations
-- **Fast Package Installation**: Uses [uv](https://github.com/astral-sh/uv), a Python packaging tool built in Rust that's much faster than pip
-- **Automatic Error Recovery**: Detects and attempts to recover from common installation issues
-- **Customizable Paths**: Allows specifying custom Python paths through settings
+- Automatic Python setup and dependency management
+- Creates isolated environments that won't conflict with your system
+- Works across Windows, macOS, and Linux
+- 10-100x faster than traditional pip installations
 
-This ensures the extension works reliably regardless of your existing Python setup and prevents version conflicts.
+**If you encounter any UV-related errors during installation:**
+1. Install UV manually:
+   ```bash
+   # Windows (PowerShell as Administrator)
+   powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+   
+   # macOS/Linux
+   curl -LsSf https://astral.sh/uv/install.sh | sh
+   ```
+2. Follow the [Troubleshooting](#common-installation-issues) steps to reinstall the extension
 
-### About uv Integration
-
-Starting with version 0.1.3, this extension integrates [uv](https://github.com/astral-sh/uv), a fast Python package installer built in Rust that significantly improves dependency installation speed.
-
-How uv is used:
-- **When Python is Missing**: If no Python installation is found, the extension uses uv to create a virtual environment and install dependencies
-- **When Python < 3.11**: If your system Python is older than 3.11, uv is used to manage a local Python installation
-- **For Dependency Management**: All Python package installations use uv for faster installation times
-- **Automatic Fallback**: If uv installation fails, the extension attempts to use pip as a fallback
-- **Manual Override**: You can specify a custom Python path in settings if needed
-
-You can control uv usage with the `stata-vscode.useUvForPython` setting (default: true).
-
-**No Action Required**: Everything is handled automatically - the extension will download and use uv as needed without any manual steps from you.
-
-**Performance Improvement**: Package installation with uv can be 10-100x faster than with pip, reducing the initial setup time significantly.
-
-**Trouble with uv?** See the [Troubleshooting](#common-installation-issues) section for guidance on resolving uv-related issues.
+You can control UV usage with the `stata-vscode.useUvForPython` setting (default: true).
 
 ## Usage
 
