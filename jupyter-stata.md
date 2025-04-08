@@ -79,7 +79,7 @@ By the way, if you use the python kenrel, you can use not only stata, but also p
 
 
 ## A short usage (with python kernel)
-- [example-1](example.ipynb) This is usage for python kernel, and the first block is for different os to identify.
+- [example](examples/jupyter.ipynb) This is usage for python kernel, and the first block is for different os to identify.
 
 
 ## Wraning!
