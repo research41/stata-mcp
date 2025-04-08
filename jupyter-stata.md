@@ -78,9 +78,9 @@ reg price mpg rep78 trunk weight length
 By the way, if you use the python kenrel, you can use not only stata, but also python(pandas).
 
 
-## A short usage (with python kernel)
-- [example](examples/jupyter.ipynb) This is usage for python kernel, and the first block is for different os to identify.
+## An example usage (with python kernel)
+- [example](examples/jupyter.ipynb) 
 
 
 ## Wraning!
-You' d better not use PyCharm to write a Jupyter file whose content is Stata, Because it would identify it to python code rather than Stata.
+You' d better not use PyCharm to write a Jupyter file whose content is Stata, because it would identify it as python code rather than Stata.
