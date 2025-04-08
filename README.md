@@ -23,7 +23,7 @@ This extension provides Stata integration for Visual Studio Code and Cursor IDE 
 > **Looking for other Stata integrations?**
 > - Use Stata with Notepad++ and Sublime Text 3? See [here](https://github.com/sook-tusk/Tech_Integrate_Stata_R_with_Editors)
 > - Use Stata MCP in Claude or Cline? See [here](https://github.com/SepineTam/stata-mcp)
-> -Use Stata via Jupyter? See [here](jupyter-stata.md)
+> - Use Stata via Jupyter? See [here](https://github.com/hanlulong/stata-mcp/blob/main/examples/jupyter.ipynb)
 
 ## Installation Options
 
@@ -66,9 +66,9 @@ If you prefer to install manually:
    - Select "Install from VSIX..."
    - Navigate to and select the downloaded .vsix file
 3. For Cursor:
-   - Run this command in a terminal: `cursor --install-extension path/to/stata-mcp-0.1.4.vsix`
+   - Run this command in a terminal: `cursor --install-extension path/to/stata-mcp-0.1.5.vsix`
 
-> **Note:** The first time the extension is installed or run may take some time as dependencies need to be added. Please be patient and wait for it to finish. This process should normally take less than 2 minutes.
+> **Note:** Initial installation requires setting up dependencies which may take up to 2 minutes to complete. Please be patient during this one-time setup process and wait for the server to start. All subsequent runs will start instantly.
 
 ## Extension Settings
 
@@ -117,36 +117,30 @@ This configuration allows Cursor's AI to communicate with the Stata MCP server t
 
 ## Requirements
 
-- Stata installed on your machine (Stata 14 or higher recommended)
-- Python 3.11 or higher (automatically installed locally if your existing Python version is < 3.11)
+- Stata 15 or higher installed on your machine
+- UV package manager (automatically installed or can be installed manually if needed)
 
 ## Python Environment Management
 
-The extension now includes advanced Python environment management:
+This extension uses [uv](https://github.com/astral-sh/uv), a fast Python package installer built in Rust, to manage Python dependencies. Key features:
 
-- **Version Check**: Checks if Python 3.11+ is available on your system
-- **Smart Installation**: Installs Python 3.11 locally only when your existing Python version is < 3.11
-- **Isolated Environment**: Uses a local installation that won't conflict with any existing Python installations
-- **Dependency Management**: Sets up a virtual environment with all required packages
-- **Cross-Platform Support**: Works on Windows, macOS, and Linux with platform-specific optimizations
-- **Fast Package Installation**: Uses [uv](https://github.com/astral-sh/uv), a Python packaging tool built in Rust that's much faster than pip
+- Automatic Python setup and dependency management
+- Creates isolated environments that won't conflict with your system
+- Works across Windows, macOS, and Linux
+- 10-100x faster than traditional pip installations
 
-This ensures the extension works reliably regardless of your existing Python setup and prevents version conflicts.
+**If you encounter any UV-related errors during installation:**
+1. Install UV manually:
+   ```bash
+   # Windows (PowerShell as Administrator)
+   powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+   
+   # macOS/Linux
+   curl -LsSf https://astral.sh/uv/install.sh | sh
+   ```
+2. Follow the [Troubleshooting](#common-installation-issues) steps to reinstall the extension
 
-### About uv Integration
-
-Starting with version 0.1.3, this extension integrates [uv](https://github.com/astral-sh/uv), a fast Python package installer built in Rust that significantly improves dependency installation speed.
-
-How uv is used:
-- **When Python is Missing**: If no Python installation is found, the extension uses uv to create a virtual environment and install dependencies
-- **When Python < 3.11**: If your system Python is older than 3.11, uv is used to manage a local Python installation
-- **For Dependency Management**: All Python package installations use uv for faster installation times
-
-You can control uv usage with the `stata-vscode.useUvForPython` setting (default: true).
-
-**No Action Required**: Everything is handled automatically - the extension will download and use uv as needed without any manual steps from you.
-
-**Performance Improvement**: Package installation with uv can be 10-100x faster than with pip, reducing the initial setup time significantly.
+You can control UV usage with the `stata-vscode.useUvForPython` setting (default: true).
 
 ## Usage
 
