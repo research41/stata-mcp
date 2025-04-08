@@ -57,3 +57,5 @@ stata-mcp-*.vsix
 !.github/workflows/release.yml
 !examples/
 !examples/**
+
+!jupyter-stata.md
