@@ -58,7 +58,7 @@ Then you can see the window on your brower:
 ![Jupyter Lab in Brower](images/jupyterlab.png)
 
 You can choose Notebook-Stata directly for use Stata Kernel, which is look like:
-![Jupyter Stata Use](images/jupyterLabExample.png)
+![Jupyter Stata Use](images/JupyterLabExample.png)
 
 ## Magic Command(on Vscode, or jupyter lab with python kernel)
 The part is under the structure of [here](#vscode-config)
