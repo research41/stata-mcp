@@ -1,9 +1,9 @@
 {
 	"name": "stata-mcp",
 	"displayName": "Stata MCP",
-	"description": "Stata integration for VS Code using Model Context Protocol",
+	"description": "Stata MCP Extension for VS Code and Cursor IDE",
 	"publisher": "DeepEcon",
-	"version": "0.1.7",
+	"version": "0.1.8",
 	"engines": {
 		"vscode": "^1.75.0"
 	},
@@ -101,11 +101,6 @@
 					"default": "",
 					"description": "Path to Stata installation directory"
 				},
-				"stata-vscode.pythonPath": {
-					"type": "string",
-					"default": "",
-					"description": "Path to Python interpreter. If not set, the extension will try to use the system Python or Anaconda base environment."
-				},
 				"stata-vscode.mcpServerHost": {
 					"type": "string",
 					"default": "localhost",
@@ -145,16 +140,6 @@
 					"type": "boolean",
 					"default": false,
 					"description": "Force the MCP server to use the specified port even if it's already in use"
-				},
-				"stata-vscode.useUvForPython": {
-					"type": "boolean",
-					"default": true,
-					"description": "Use uv for Python environment management (recommended)"
-				},
-				"stata-vscode.autoConfigureCline": {
-					"type": "boolean",
-					"default": true,
-					"description": "Automatically configure Cline MCP settings when Cline is installed"
 				},
 				"stata-vscode.clineConfigPath": {
 					"type": "string",

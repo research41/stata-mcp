@@ -48,17 +48,17 @@ Or:
 
 ### Option 2: From .vsix file
 
-1. Download the extension package `stata-mcp-0.1.7.vsix` from the [releases page](https://github.com/hanlulong/stata-mcp/releases).
+1. Download the extension package `stata-mcp-0.1.8.vsix` from the [releases page](https://github.com/hanlulong/stata-mcp/releases).
 2. Install using one of these methods:
 
 For VS Code:
 ```bash
-code --install-extension path/to/stata-mcp-0.1.7.vsix
+code --install-extension path/to/stata-mcp-0.1.8.vsix
 ```
 
 For Cursor:
 ```bash
-cursor --install-extension path/to/stata-mcp-0.1.7.vsix
+cursor --install-extension path/to/stata-mcp-0.1.8.vsix
 ```
 
 Or in VS Code:
@@ -67,7 +67,9 @@ Or in VS Code:
 3. Select "Install from VSIX..."
 4. Navigate to and select the downloaded .vsix file
 
-Starting with version 0.1.7, the extension integrates a fast Python package installer called `uv` to set up the environment. If uv is not found on your system, the extension will attempt to install it automatically.
+> Note: The extension also supports Cline's AI capabilities when used within VS Code. No additional installation steps are required - just install Cline from the VS Code marketplace to enable its AI features with this extension.
+
+Starting with version 0.1.8, the extension integrates a fast Python package installer called `uv` to set up the environment. If uv is not found on your system, the extension will attempt to install it automatically.
 
 ## Cursor MCP Configuration
 
@@ -131,9 +133,16 @@ To use Stata MCP with Cline in VS Code:
    - Save the file and restart VS Code
 
 5. Configuration options:
-   - `stata-vscode.autoConfigureCline`: Enable/disable automatic Cline configuration (default: true)
    - `stata-vscode.clineConfigPath`: Specify a custom path for the Cline configuration file
    - These can be set in VS Code settings (File > Preferences > Settings)
+
+6. Troubleshooting Cline configuration:
+   - If Cline is not recognizing Stata MCP, run the included test script: 
+     ```bash
+     node /path/to/extension/test-cline-settings.js
+     ```
+   - This script finds all possible Cline configuration locations and ensures the configuration is set correctly
+   - After running the script, restart VS Code and Cline should detect the Stata MCP server
 
 When properly configured, Cline's AI assistant can:
 - Execute and analyze Stata commands
@@ -154,14 +163,11 @@ Common troubleshooting steps:
 You can customize the extension behavior through VS Code settings:
 
 - `stata-vscode.stataPath`: Path to Stata installation directory
-- `stata-vscode.pythonPath`: Path to Python interpreter. If not set, the extension will try to use the system Python or Anaconda base environment
 - `stata-vscode.mcpServerHost`: Host for MCP server (default: localhost)
 - `stata-vscode.mcpServerPort`: Port for the MCP server (default: 4000)
 - `stata-vscode.autoStartServer`: Automatically start MCP server when extension activates (default: true)
 - `stata-vscode.debugMode`: Show detailed debug information in output panel (default: false)
 - `stata-vscode.forcePort`: Force the MCP server to use the specified port even if it's already in use (default: false)
-- `stata-vscode.useUvForPython`: Use uv for Python environment management which is faster and more reliable (default: true)
-- `stata-vscode.autoConfigureCline`: Automatically configure Cline MCP settings when Cline is installed (default: true)
 - `stata-vscode.clineConfigPath`: Custom path to Cline configuration file (optional, defaults to standard locations)
 
 ## Usage
@@ -200,9 +206,7 @@ This extension uses [uv](https://github.com/astral-sh/uv), a fast Python package
    ```
 2. Follow the [Troubleshooting](#common-installation-issues) steps to reinstall the extension
 
-You can control UV usage with the `stata-vscode.useUvForPython` setting (default: true).
-
-Starting with version 0.1.7, this extension integrates the fast Python package installer [uv](https://github.com/astral-sh/uv) to set up the environment. If uv is not found on your system, the extension will attempt to install it automatically.
+Starting with version 0.1.8, this extension integrates the fast Python package installer [uv](https://github.com/astral-sh/uv) to set up the environment. If uv is not found on your system, the extension will attempt to install it automatically.
 
 ## Troubleshooting
 
