@@ -24,11 +24,9 @@ This extension provides Stata integration for Visual Studio Code and Cursor IDE 
 
 Watch how this extension enhances your Stata workflow with VS Code and AI assistance:
 
-![Stata MCP Extension Demo](images/demo_optimized.gif)
+![Stata MCP Extension Demo](images/demo_highres2.gif)
 
-<sub>
-View options: [Higher quality (28MB)](images/demo_hq.gif) | [Lower quality (4MB)](images/demo.gif) | [Video version](images/demo.mp4)
-</sub>
+**[▶️ Watch video version (MP4)](images/demo.mp4)**
 
 <sub>*Demo prompt: "Write and execute Stata do-files, ensuring that full absolute file paths are used in all cases. Load the auto dataset (webuse auto) and generate summary statistics for each variable. Identify and extract key features from the dataset, produce relevant plots, and save them in a folder named plots. Conduct a regression analysis to examine the main determinants of car prices. Export all outputs to a LaTeX file and compile it. Address any compilation errors automatically, and ensure that LaTeX compilation does not exceed 10 seconds. All code errors should be identified and resolved as part of the workflow."*</sub>
 
