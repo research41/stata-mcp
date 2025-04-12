@@ -22,7 +22,7 @@ This extension provides Stata integration for Visual Studio Code and Cursor IDE 
 
 ## Demo
 
-Watch how this extension enhances your Stata workflow with VS Code and AI assistance:
+Watch how this extension enhances your Stata workflow with Cursor (or VS Code) and AI assistance:
 
 ![Stata MCP Extension Demo](images/demo_highres2.gif)
 
