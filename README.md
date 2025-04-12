@@ -26,7 +26,7 @@ Watch how this extension enhances your Stata workflow with Cursor (or VS Code) a
 
 ![Stata MCP Extension Demo](images/demo_2x.gif)
 
-**[🎬 Full Video Version](video.html)** &nbsp;&nbsp;|&nbsp;&nbsp; **[📄 View Generated PDF Report](examples/auto_report.pdf)**
+**[🎬 Full Video Version](https://hanlulong.github.io/stata-mcp/video.html)** &nbsp;&nbsp;|&nbsp;&nbsp; **[📄 View Generated PDF Report](examples/auto_report.pdf)**
 
 <sub>*Demo prompt: "Write and execute Stata do-files, ensuring that full absolute file paths are used in all cases. Load the auto dataset (webuse auto) and generate summary statistics for each variable. Identify and extract key features from the dataset, produce relevant plots, and save them in a folder named plots. Conduct a regression analysis to examine the main determinants of car prices. Export all outputs to a LaTeX file and compile it. Address any compilation errors automatically, and ensure that LaTeX compilation does not exceed 10 seconds. All code errors should be identified and resolved as part of the workflow."*</sub>
 
