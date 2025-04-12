@@ -20,6 +20,58 @@ This extension provides Stata integration for Visual Studio Code and Cursor IDE 
 - **Automatic Stata Detection**: Automatically finds your Stata installation
 - **Real-time Output**: See Stata results instantly in your editor
 
+> **Looking for other Stata integrations?**
+> - Use Stata with Notepad++ and Sublime Text 3? See [here](https://github.com/sook-tusk/Tech_Integrate_Stata_R_with_Editors)
+> - Use Stata MCP in Claude Desktop without installing this extension? See [here](https://github.com/SepineTam/stata-mcp)
+> - Use Stata via Jupyter? See [here](https://github.com/hanlulong/stata-mcp/blob/main/jupyter-stata.md)
+
+## MCP Server Configuration Details
+
+When the extension starts, it launches an MCP server that provides Stata functionality. Here are the important paths and configuration details:
+
+### MCP Server Paths
+
+- **Server Script**: Located in the extension directory
+  - VS Code: 
+    - Windows: `%USERPROFILE%\.vscode\extensions\deepecon.stata-mcp-x.x.x\stata_mcp_server.py`
+    - macOS: `~/.vscode/extensions/deepecon.stata-mcp-x.x.x/stata_mcp_server.py`
+    - Linux: `~/.vscode/extensions/deepecon.stata-mcp-x.x.x/stata_mcp_server.py`
+  - Cursor:
+    - Windows: `%USERPROFILE%\.cursor\extensions\deepecon.stata-mcp-x.x.x\stata_mcp_server.py`
+    - macOS: `~/.cursor/extensions/deepecon.stata-mcp-x.x.x/stata_mcp_server.py`
+    - Linux: `~/.cursor/extensions/deepecon.stata-mcp-x.x.x/stata_mcp_server.py`
+
+- **Log Files**:
+  - VS Code:
+    - Windows: `%USERPROFILE%\.vscode\extensions\deepecon.stata-mcp-x.x.x\mcp_server.log`
+    - macOS: `~/.vscode/extensions/deepecon.stata-mcp-x.x.x/mcp_server.log`
+    - Linux: `~/.vscode/extensions/deepecon.stata-mcp-x.x.x/mcp_server.log`
+  - Cursor:
+    - Windows: `%USERPROFILE%\.cursor\extensions\deepecon.stata-mcp-x.x.x\mcp_server.log`
+    - macOS: `~/.cursor/extensions/deepecon.stata-mcp-x.x.x/mcp_server.log`
+    - Linux: `~/.cursor/extensions/deepecon.stata-mcp-x.x.x/mcp_server.log`
+
+- **Python Environment**:
+  - VS Code:
+    - Windows: `%USERPROFILE%\.vscode\extensions\deepecon.stata-mcp-x.x.x\.venv`
+    - macOS: `~/.vscode/extensions/deepecon.stata-mcp-x.x.x/.venv`
+    - Linux: `~/.vscode/extensions/deepecon.stata-mcp-x.x.x/.venv`
+  - Cursor:
+    - Windows: `%USERPROFILE%\.cursor\extensions\deepecon.stata-mcp-x.x.x\.venv`
+    - macOS: `~/.cursor/extensions/deepecon.stata-mcp-x.x.x/.venv`
+    - Linux: `~/.cursor/extensions/deepecon.stata-mcp-x.x.x/.venv`
+
+### Default MCP Server URL
+
+The MCP server by default runs at:
+```
+http://localhost:4000/mcp
+```
+
+This can be customized using the extension settings:
+- `stata-vscode.mcpServerHost`: Change the host (default: localhost)
+- `stata-vscode.mcpServerPort`: Change the port (default: 4000)
+
 ## Cursor MCP Configuration
 
 The extension automatically configures Cursor MCP integration. To verify it's working:
@@ -28,6 +80,22 @@ The extension automatically configures Cursor MCP integration. To verify it's wo
 2. Press `Ctrl+Shift+P` (or `Cmd+Shift+P` on Mac) to open the Command Palette
 3. Type "Stata: Test MCP Server Connection" and press Enter
 4. You should see a success message if the server is properly connected
+
+### Cursor Configuration File Paths
+
+The location of Cursor MCP configuration files varies by operating system:
+
+- **macOS**:
+  - Primary location: `~/.cursor/mcp.json`
+  - Alternative location: `~/Library/Application Support/Cursor/User/mcp.json`
+
+- **Windows**:
+  - Primary location: `%USERPROFILE%\.cursor\mcp.json`
+  - Alternative location: `%APPDATA%\Cursor\User\mcp.json`
+
+- **Linux**:
+  - Primary location: `~/.cursor/mcp.json`
+  - Alternative location: `~/.config/Cursor/User/mcp.json`
 
 ### Manual Cursor Configuration
 
@@ -167,12 +235,7 @@ You can use this extension with Claude Desktop through mcp-proxy:
 
 6. Claude Desktop will automatically discover the available Stata tools, allowing you to run Stata commands and analyze data directly from your conversations.
 
-> **Note:** There is an alternative way to use Stata MCP in Claude Desktop without installing this extension. See the project referenced below.
-
-> **Looking for other Stata integrations?**
-> - Use Stata with Notepad++ and Sublime Text 3? See [here](https://github.com/sook-tusk/Tech_Integrate_Stata_R_with_Editors)
-> - Use Stata MCP in Claude Desktop without installing the extension? See [here](https://github.com/SepineTam/stata-mcp)
-> - Use Stata via Jupyter? See [here](https://github.com/hanlulong/stata-mcp/blob/main/jupyter-stata.md)
+> **Note:** There is an alternative way to use Stata MCP in Claude Desktop without installing this extension. See [here](https://github.com/SepineTam/stata-mcp).
 
 ## Requirements
 
