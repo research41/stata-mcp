@@ -20,57 +20,6 @@ This extension provides Stata integration for Visual Studio Code and Cursor IDE 
 - **Automatic Stata Detection**: Automatically finds your Stata installation
 - **Real-time Output**: See Stata results instantly in your editor
 
-> **Looking for other Stata integrations?**
-> - Use Stata with Notepad++ and Sublime Text 3? See [here](https://github.com/sook-tusk/Tech_Integrate_Stata_R_with_Editors)
-> - Use Stata MCP in Claude Desktop? See [here](https://github.com/SepineTam/stata-mcp)
-> - Use Stata via Jupyter? See [here](https://github.com/hanlulong/stata-mcp/blob/main/jupyter-stata.md)
-
-## Requirements
-
-- Stata 17 or higher installed on your machine
-- [UV](https://github.com/astral-sh/uv) package manager (automatically installed or can be installed manually if needed)
-
-## Installation
-
-### Option 1: From VS Code Marketplace
-
-Install this extension directly from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=DeepEcon.stata-mcp).
-
-```bash
-code --install-extension DeepEcon.stata-mcp
-```
-
-Or:
-1. Open VS Code
-2. Go to Extensions view (Ctrl+Shift+X)
-3. Search for "Stata MCP"
-4. Click "Install"
-
-### Option 2: From .vsix file
-
-1. Download the extension package `stata-mcp-0.1.9.vsix` from the [releases page](https://github.com/hanlulong/stata-mcp/releases).
-2. Install using one of these methods:
-
-For VS Code:
-```bash
-code --install-extension path/to/stata-mcp-0.1.9.vsix
-```
-
-For Cursor:
-```bash
-cursor --install-extension path/to/stata-mcp-0.1.9.vsix
-```
-
-Or in VS Code:
-1. Go to Extensions view
-2. Click on "..." menu in the top-right
-3. Select "Install from VSIX..."
-4. Navigate to and select the downloaded .vsix file
-
-> Note: The extension also supports Cline's AI capabilities when used within VS Code. No additional installation steps are required - just install Cline from the VS Code marketplace to enable its AI features with this extension.
-
-Starting with version 0.1.8, the extension integrates a fast Python package installer called `uv` to set up the environment. If uv is not found on your system, the extension will attempt to install it automatically.
-
 ## Cursor MCP Configuration
 
 The extension automatically configures Cursor MCP integration. To verify it's working:
@@ -80,11 +29,30 @@ The extension automatically configures Cursor MCP integration. To verify it's wo
 3. Type "Stata: Test MCP Server Connection" and press Enter
 4. You should see a success message if the server is properly connected
 
+## Cline MCP Configuration
+
+This extension automatically configures Cline MCP settings when Cline is installed in VS Code. You can control this behavior with the `stata-vscode.autoConfigureCline` setting.
+
+To verify the connection:
+1. Make sure the extension is active (open a .do file)
+2. Open Cline in VS Code
+3. Check if Stata commands work in your Cline conversation
+
+You can also manually set the Cline configuration in VS Code settings:
+```json
+"cline.mcpSettings": {
+  "stata-mcp": {
+    "url": "http://localhost:4000/mcp",
+    "transport": "sse"
+  }
+}
+```
+
 ## Claude Desktop MCP Configuration
 
 You can use this extension with Claude Desktop through mcp-proxy:
 
-1. Make sure the Stata MCP extension is installed and running in VS Code
+1. Make sure the Stata MCP extension is installed in VS Code or Cursor and currently running before attempting to configure Claude Desktop
 2. Install mcp-proxy:
    ```bash
    # Using pip
@@ -134,60 +102,58 @@ You can use this extension with Claude Desktop through mcp-proxy:
 
 6. Claude Desktop will automatically discover the available Stata tools, allowing you to run Stata commands and analyze data directly from your conversations.
 
-## Cline MCP Configuration
+> **Note:** There is an alternative way to use Stata MCP in Claude Desktop without installing this extension. See the project referenced below.
 
-To use Stata MCP with Cline in VS Code:
+> **Looking for other Stata integrations?**
+> - Use Stata with Notepad++ and Sublime Text 3? See [here](https://github.com/sook-tusk/Tech_Integrate_Stata_R_with_Editors)
+> - Use Stata MCP in Claude Desktop without installing the extension? See [here](https://github.com/SepineTam/stata-mcp)
+> - Use Stata via Jupyter? See [here](https://github.com/hanlulong/stata-mcp/blob/main/jupyter-stata.md)
 
-1. First, ensure you have the [Cline extension](https://marketplace.visualstudio.com/items?itemName=Cline.cline) installed in VS Code.
+## Requirements
 
-2. The Stata MCP extension will automatically detect Cline and configure it when installed. The configuration is added to:
-   - On macOS: `~/Library/Application Support/Code/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json`
-   - On Windows: `%APPDATA%/Code/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json`
-   - On Linux: `~/.config/Code/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json`
+- Stata 17 or higher installed on your machine
+- [UV](https://github.com/astral-sh/uv) package manager (automatically installed or can be installed manually if needed)
 
-3. The automatic configuration adds:
+## Installation
 
-```json
-{
-  "mcpServers": {
-    "stata-mcp": {
-      "url": "http://localhost:4000/mcp",
-      "transport": "sse"
-    }
-  }
-}
+### Option 1: From VS Code Marketplace
+
+Install this extension directly from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=DeepEcon.stata-mcp).
+
+```bash
+code --install-extension DeepEcon.stata-mcp
 ```
 
-4. If you need to manually configure Cline:
-   - Open the configuration file mentioned above
-   - Add the "stata-mcp" section to your existing "mcpServers" object
-   - Save the file and restart VS Code
+Or:
+1. Open VS Code
+2. Go to Extensions view (Ctrl+Shift+X)
+3. Search for "Stata MCP"
+4. Click "Install"
 
-5. Configuration options:
-   - `stata-vscode.clineConfigPath`: Specify a custom path for the Cline configuration file
-   - These can be set in VS Code settings (File > Preferences > Settings)
+### Option 2: From .vsix file
 
-6. Troubleshooting Cline configuration:
-   - If Cline is not recognizing Stata MCP, run the included test script: 
-     ```bash
-     node /path/to/extension/test-cline-settings.js
-     ```
-   - This script finds all possible Cline configuration locations and ensures the configuration is set correctly
-   - After running the script, restart VS Code and Cline should detect the Stata MCP server
+1. Download the extension package `stata-mcp-0.1.9.vsix` from the [releases page](https://github.com/hanlulong/stata-mcp/releases).
+2. Install using one of these methods:
 
-When properly configured, Cline's AI assistant can:
-- Execute and analyze Stata commands
-- Access your Stata session context
-- Provide data analysis suggestions
-- Help with statistical modeling
-- Debug Stata code issues
+For VS Code:
+```bash
+code --install-extension path/to/stata-mcp-0.1.9.vsix
+```
 
-Common troubleshooting steps:
-1. Ensure both Cline and Stata MCP extensions are installed
-2. Check that the MCP server is running (Status bar should show "Stata")
-3. Verify the configuration file exists and contains correct settings
-4. Try restarting VS Code after configuration changes
-5. Check the Output panel (View > Output > Stata MCP) for any error messages
+For Cursor:
+```bash
+cursor --install-extension path/to/stata-mcp-0.1.9.vsix
+```
+
+Or in VS Code:
+1. Go to Extensions view
+2. Click on "..." menu in the top-right
+3. Select "Install from VSIX..."
+4. Navigate to and select the downloaded .vsix file
+
+> Note: The extension also supports Cline's AI capabilities when used within VS Code. No additional installation steps are required - just install Cline from the VS Code marketplace to enable its AI features with this extension.
+
+Starting with version 0.1.8, the extension integrates a fast Python package installer called `uv` to set up the environment. If uv is not found on your system, the extension will attempt to install it automatically.
 
 ## Extension Settings
 
