@@ -51,6 +51,8 @@ stata-mcp-*.vsix
 !LICENSE
 !images/
 !images/**
+!images/demo.gif
+!images/demo.mp4
 !stata-mcp-0.2.0.vsix
 !.github/
 !.github/workflows/
