@@ -3,7 +3,7 @@
 	"displayName": "Stata MCP",
 	"description": "Stata integration for VS Code using Model Context Protocol",
 	"publisher": "DeepEcon",
-	"version": "0.1.6",
+	"version": "0.1.7",
 	"engines": {
 		"vscode": "^1.75.0"
 	},
@@ -150,6 +150,16 @@
 					"type": "boolean",
 					"default": true,
 					"description": "Use uv for Python environment management (recommended)"
+				},
+				"stata-vscode.autoConfigureCline": {
+					"type": "boolean",
+					"default": true,
+					"description": "Automatically configure Cline MCP settings when Cline is installed"
+				},
+				"stata-vscode.clineConfigPath": {
+					"type": "string",
+					"default": "",
+					"description": "Custom path to Cline configuration file (optional, defaults to standard locations)"
 				}
 			}
 		},
