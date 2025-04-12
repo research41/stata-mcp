@@ -48,17 +48,17 @@ Or:
 
 ### Option 2: From .vsix file
 
-1. Download the extension package `stata-mcp-0.1.8.vsix` from the [releases page](https://github.com/hanlulong/stata-mcp/releases).
+1. Download the extension package `stata-mcp-0.1.9.vsix` from the [releases page](https://github.com/hanlulong/stata-mcp/releases).
 2. Install using one of these methods:
 
 For VS Code:
 ```bash
-code --install-extension path/to/stata-mcp-0.1.8.vsix
+code --install-extension path/to/stata-mcp-0.1.9.vsix
 ```
 
 For Cursor:
 ```bash
-cursor --install-extension path/to/stata-mcp-0.1.8.vsix
+cursor --install-extension path/to/stata-mcp-0.1.9.vsix
 ```
 
 Or in VS Code:
@@ -73,35 +73,66 @@ Starting with version 0.1.8, the extension integrates a fast Python package inst
 
 ## Cursor MCP Configuration
 
-To enable AI integration with Stata in Cursor, you need to configure the MCP connection:
+The extension automatically configures Cursor MCP integration. To verify it's working:
 
-1. Create or edit the MCP configuration file:
-   - On macOS/Linux: `~/.cursor/mcp.json`
-   - On Windows: `%USERPROFILE%\.cursor\mcp.json`
+1. Open Cursor
+2. Press `Ctrl+Shift+P` (or `Cmd+Shift+P` on Mac) to open the Command Palette
+3. Type "Stata: Test MCP Server Connection" and press Enter
+4. You should see a success message if the server is properly connected
 
-2. Add the following configuration to your `mcp.json` file:
+## Claude Desktop MCP Configuration
 
-```json
-{
-  "mcpServers": {
-    "stata-mcp": {
-      "url": "http://localhost:4000/mcp",
-      "transport": "sse"
-    }
-  }
-}
-```
+You can use this extension with Claude Desktop through mcp-proxy:
 
-3. If you already have other MCP configurations in the file, just add the "stata-mcp" section to your existing "mcpServers" object.
+1. Make sure the Stata MCP extension is installed and running in VS Code
+2. Install mcp-proxy:
+   ```bash
+   # Using pip
+   pip install mcp-proxy
+   
+   # Or using uv (faster)
+   uv install mcp-proxy
+   ```
 
-4. Save the file and restart Cursor
+3. Find the path to mcp-proxy:
+   ```bash
+   # On Mac/Linux
+   which mcp-proxy
+   
+   # On Windows (PowerShell)
+   (Get-Command mcp-proxy).Path
+   ```
 
-This configuration allows Cursor's AI to communicate with the Stata MCP server that starts automatically when you use the extension. When properly configured, the AI assistant can:
-- Interact with your Stata sessions
-- Execute Stata commands
-- Understand your datasets and variables
-- Provide more context-aware coding assistance
-- Help with data analysis and visualizations
+4. Configure Claude Desktop by editing the MCP config file:
+
+   **On Windows** (typically at `%APPDATA%\Claude Desktop\claude_desktop_config.json`):
+   ```json
+   {
+     "mcpServers": {
+       "stata-mcp": {
+         "command": "mcp-proxy",
+         "args": ["http://127.0.0.1:4000/mcp"]
+       }
+     }
+   }
+   ```
+
+   **On macOS** (typically at `~/Library/Application Support/Claude Desktop/claude_desktop_config.json`):
+   ```json
+   {
+     "mcpServers": {
+       "stata-mcp": {
+         "command": "/path/to/mcp-proxy",
+         "args": ["http://127.0.0.1:4000/mcp"]
+       }
+     }
+   }
+   ```
+   Replace `/path/to/mcp-proxy` with the actual path you found in step 3.
+
+5. Restart Claude Desktop
+
+6. Claude Desktop will automatically discover the available Stata tools, allowing you to run Stata commands and analyze data directly from your conversations.
 
 ## Cline MCP Configuration
 
