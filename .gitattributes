@@ -1,0 +1,7 @@
+# Mark all files as documentation to hide language statistics on GitHub
+* linguist-documentation=true
+*.vsix binary
+
+# Exclude specific folders from language statistics
+examples/* linguist-vendored
+.github/* linguist-vendored 
