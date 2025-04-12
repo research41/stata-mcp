@@ -33,6 +33,8 @@ This extension provides Stata integration for Visual Studio Code and Cursor IDE 
 
 ## Installation
 
+> **Note:** Initial installation requires setting up dependencies which may take up to 2 minutes to complete. Please be patient during this one-time setup process. All subsequent runs will start instantly.
+
 ### VS Code Installation
 
 #### Option 1: From VS Code Marketplace
@@ -80,8 +82,6 @@ Or:
 3. Click on the "..." menu
 4. Select "Install from VSIX"
 5. Navigate to and select the downloaded .vsix file
-
-> Note: The extension also supports Cline's AI capabilities when used within VS Code. No additional installation steps are required - just install Cline from the VS Code marketplace to enable its AI features with this extension.
 
 Starting with version 0.1.8, the extension integrates a fast Python package installer called `uv` to set up the environment. If uv is not found on your system, the extension will attempt to install it automatically.
 
