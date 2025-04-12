@@ -26,7 +26,7 @@ Watch how this extension enhances your Stata workflow with Cursor (or VS Code) a
 
 ![Stata MCP Extension Demo](images/demo_2x.gif)
 
-**[🎬 Full Video Version](https://hanlulong.github.io/stata-mcp/video.html)** &nbsp;&nbsp;|&nbsp;&nbsp; **[📄 View Generated PDF Report](examples/auto_report.pdf)**
+**[🎬 Full Video Version](https://github.com/hanlulong/stata-mcp/raw/main/images/demo.mp4)** &nbsp;&nbsp;|&nbsp;&nbsp; **[📄 View Generated PDF Report](examples/auto_report.pdf)**
 
 <sub>*Demo prompt: "Write and execute Stata do-files, ensuring that full absolute file paths are used in all cases. Load the auto dataset (webuse auto) and generate summary statistics for each variable. Identify and extract key features from the dataset, produce relevant plots, and save them in a folder named plots. Conduct a regression analysis to examine the main determinants of car prices. Export all outputs to a LaTeX file and compile it. Address any compilation errors automatically, and ensure that LaTeX compilation does not exceed 10 seconds. All code errors should be identified and resolved as part of the workflow."*</sub>
 
@@ -183,16 +183,6 @@ If Cursor is not recognizing the Stata MCP server:
 
 ## Cline MCP Configuration
 
-This extension automatically configures Cline MCP settings when Cline is installed in VS Code. You can control this behavior with the `stata-vscode.autoConfigureCline` setting.
-
-To verify the connection:
-1. Make sure the extension is active (open a .do file)
-2. Open Cline in VS Code
-3. Check if Stata commands work in your Cline conversation
-
-### Manual Cline Configuration
-
-If you need to manually configure Cline:
 
 1. Open your Cline MCP settings file:
    - **macOS**: `~/Library/Application Support/Code/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json`

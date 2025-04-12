@@ -35,18 +35,8 @@ stata-mcp-*.vsix
 !stata-mcp-0.2.0.vsix
 
 # Keep these files
-# .gitignore
-# README.md
-# LICENSE
-# images/
-# *.vsix
-# .github/workflows/release.yml
-
-# Ignore everything
-*
-
-# Except these files
 !.gitignore
+!.gitattributes
 !README.md
 !LICENSE
 !images/
@@ -60,7 +50,5 @@ stata-mcp-*.vsix
 !examples/
 !examples/**
 !examples/auto_report.pdf
-!video.md
-!video.html
 
 !jupyter-stata.md
