@@ -29,6 +29,38 @@ The extension automatically configures Cursor MCP integration. To verify it's wo
 3. Type "Stata: Test MCP Server Connection" and press Enter
 4. You should see a success message if the server is properly connected
 
+### Manual Cursor Configuration
+
+If you need to manually configure Cursor MCP:
+
+1. Create or edit the MCP configuration file:
+   - **macOS/Linux**: `~/.cursor/mcp.json`
+   - **Windows**: `%USERPROFILE%\.cursor\mcp.json`
+
+2. Add the Stata MCP server configuration:
+   ```json
+   {
+     "mcpServers": {
+       "stata-mcp": {
+         "url": "http://localhost:4000/mcp",
+         "transport": "sse"
+       }
+     }
+   }
+   ```
+
+3. If the file already contains other MCP servers, just add the `"stata-mcp"` entry to the existing `"mcpServers"` object.
+
+4. Save the file and restart Cursor.
+
+### Troubleshooting Cursor Configuration
+
+If Cursor is not recognizing the Stata MCP server:
+1. Verify the MCP server is running
+2. Check that the configuration file exists with the correct content
+3. Try restarting Cursor
+4. Ensure there are no port conflicts with other running applications
+
 ## Cline MCP Configuration
 
 This extension automatically configures Cline MCP settings when Cline is installed in VS Code. You can control this behavior with the `stata-vscode.autoConfigureCline` setting.
@@ -38,7 +70,32 @@ To verify the connection:
 2. Open Cline in VS Code
 3. Check if Stata commands work in your Cline conversation
 
-You can also manually set the Cline configuration in VS Code settings:
+### Manual Cline Configuration
+
+If you need to manually configure Cline:
+
+1. Open your Cline MCP settings file:
+   - **macOS**: `~/Library/Application Support/Code/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json`
+   - **Windows**: `%APPDATA%/Code/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json`
+   - **Linux**: `~/.config/Code/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json`
+
+2. Add the Stata MCP server configuration:
+   ```json
+   {
+     "mcpServers": {
+       "stata-mcp": {
+         "url": "http://localhost:4000/mcp",
+         "transport": "sse"
+       }
+     }
+   }
+   ```
+
+3. If the file already contains other MCP servers, just add the `"stata-mcp"` entry to the existing `"mcpServers"` object.
+
+4. Save the file and restart VS Code.
+
+You can also configure Cline through VS Code settings:
 ```json
 "cline.mcpSettings": {
   "stata-mcp": {
@@ -47,6 +104,14 @@ You can also manually set the Cline configuration in VS Code settings:
   }
 }
 ```
+
+### Troubleshooting Cline Configuration
+
+If Cline is not recognizing the Stata MCP server:
+1. Verify the MCP server is running (Status bar should show "Stata")
+2. Check that the configuration file exists with the correct content
+3. Try restarting VS Code
+4. Check the extension output panel (View > Output > Stata MCP) for any errors
 
 ## Claude Desktop MCP Configuration
 
