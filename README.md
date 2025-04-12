@@ -25,53 +25,6 @@ This extension provides Stata integration for Visual Studio Code and Cursor IDE 
 > - Use Stata MCP in Claude Desktop without installing this extension? See [here](https://github.com/SepineTam/stata-mcp)
 > - Use Stata via Jupyter? See [here](https://github.com/hanlulong/stata-mcp/blob/main/jupyter-stata.md)
 
-## MCP Server Configuration Details
-
-When the extension starts, it launches an MCP server that provides Stata functionality. Here are the important paths and configuration details:
-
-### MCP Server Paths
-
-- **Server Script**: Located in the extension directory
-  - VS Code: 
-    - Windows: `%USERPROFILE%\.vscode\extensions\deepecon.stata-mcp-x.x.x\stata_mcp_server.py`
-    - macOS: `~/.vscode/extensions/deepecon.stata-mcp-x.x.x/stata_mcp_server.py`
-    - Linux: `~/.vscode/extensions/deepecon.stata-mcp-x.x.x/stata_mcp_server.py`
-  - Cursor:
-    - Windows: `%USERPROFILE%\.cursor\extensions\deepecon.stata-mcp-x.x.x\stata_mcp_server.py`
-    - macOS: `~/.cursor/extensions/deepecon.stata-mcp-x.x.x/stata_mcp_server.py`
-    - Linux: `~/.cursor/extensions/deepecon.stata-mcp-x.x.x/stata_mcp_server.py`
-
-- **Log Files**:
-  - VS Code:
-    - Windows: `%USERPROFILE%\.vscode\extensions\deepecon.stata-mcp-x.x.x\mcp_server.log`
-    - macOS: `~/.vscode/extensions/deepecon.stata-mcp-x.x.x/mcp_server.log`
-    - Linux: `~/.vscode/extensions/deepecon.stata-mcp-x.x.x/mcp_server.log`
-  - Cursor:
-    - Windows: `%USERPROFILE%\.cursor\extensions\deepecon.stata-mcp-x.x.x\mcp_server.log`
-    - macOS: `~/.cursor/extensions/deepecon.stata-mcp-x.x.x/mcp_server.log`
-    - Linux: `~/.cursor/extensions/deepecon.stata-mcp-x.x.x/mcp_server.log`
-
-- **Python Environment**:
-  - VS Code:
-    - Windows: `%USERPROFILE%\.vscode\extensions\deepecon.stata-mcp-x.x.x\.venv`
-    - macOS: `~/.vscode/extensions/deepecon.stata-mcp-x.x.x/.venv`
-    - Linux: `~/.vscode/extensions/deepecon.stata-mcp-x.x.x/.venv`
-  - Cursor:
-    - Windows: `%USERPROFILE%\.cursor\extensions\deepecon.stata-mcp-x.x.x\.venv`
-    - macOS: `~/.cursor/extensions/deepecon.stata-mcp-x.x.x/.venv`
-    - Linux: `~/.cursor/extensions/deepecon.stata-mcp-x.x.x/.venv`
-
-### Default MCP Server URL
-
-The MCP server by default runs at:
-```
-http://localhost:4000/mcp
-```
-
-This can be customized using the extension settings:
-- `stata-vscode.mcpServerHost`: Change the host (default: localhost)
-- `stata-vscode.mcpServerPort`: Change the port (default: 4000)
-
 ## Cursor MCP Configuration
 
 The extension automatically configures Cursor MCP integration. To verify it's working:
