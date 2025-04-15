@@ -32,7 +32,7 @@ github_logs.txt
 
 # VSIX packages (except the latest)
 stata-mcp-*.vsix
-!stata-mcp-0.2.1.vsix
+!stata-mcp-0.2.2.vsix
 
 # Keep these files
 !.gitignore
@@ -44,7 +44,7 @@ stata-mcp-*.vsix
 !images/**
 !images/demo_2x.gif
 !images/demo.mp4
-!stata-mcp-0.2.1.vsix
+!stata-mcp-0.2.2.vsix
 !.github/
 !.github/workflows/
 !.github/workflows/release.yml
