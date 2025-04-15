@@ -106,6 +106,7 @@ You can customize the extension behavior through VS Code settings:
 - `stata-vscode.debugMode`: Show detailed debug information in output panel (default: false)
 - `stata-vscode.forcePort`: Force the MCP server to use the specified port even if it's already in use (default: false)
 - `stata-vscode.clineConfigPath`: Custom path to Cline configuration file (optional, defaults to standard locations)
+- `stata-vscode.runFileTimeout`: Timeout in seconds for 'Run File' operations (default: 600 seconds / 10 minutes)
 
 ## Usage
 
