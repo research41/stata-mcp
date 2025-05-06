@@ -64,11 +64,11 @@ Or:
 
 #### Option 2: From .vsix file
 
-1. Download the extension package `stata-mcp-0.2.1.vsix` from the [releases page](https://github.com/hanlulong/stata-mcp/releases).
+1. Download the extension package `stata-mcp-0.2.3.vsix` from the [releases page](https://github.com/hanlulong/stata-mcp/releases).
 2. Install using one of these methods:
 
 ```bash
-code --install-extension path/to/stata-mcp-0.2.1.vsix
+code --install-extension path/to/stata-mcp-0.2.3.vsix
 ```
 
 Or:
