@@ -32,7 +32,11 @@ github_logs.txt
 
 # VSIX packages (except the latest)
 stata-mcp-*.vsix
-!stata-mcp-0.2.2.vsix
+!stata-mcp-0.2.3.vsix
+
+# Track only specific vsix files
+*.vsix
+!stata-mcp-0.2.3.vsix
 
 # Keep these files
 !.gitignore
@@ -44,7 +48,6 @@ stata-mcp-*.vsix
 !images/**
 !images/demo_2x.gif
 !images/demo.mp4
-!stata-mcp-0.2.2.vsix
 !.github/
 !.github/workflows/
 !.github/workflows/release.yml
@@ -53,3 +56,8 @@ stata-mcp-*.vsix
 !examples/auto_report.pdf
 
 !jupyter-stata.md
+# SpecStory explanation file
+.specstory/.what-is-this.md
+
+# Always include the latest VSIX file
+!stata-mcp-0.2.3.vsix
