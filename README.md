@@ -10,6 +10,7 @@ This extension provides Stata integration for Visual Studio Code and Cursor IDE 
 - View Stata output in the editor in real-time
 - Get AI assistant integration through the MCP protocol
 - Experience enhanced AI coding with Cursor or Cline
+- Choose your Stata edition (MP, SE, or IC)
 
 ## Features
 
@@ -107,6 +108,7 @@ You can customize the extension behavior through VS Code settings:
 - `stata-vscode.forcePort`: Force the MCP server to use the specified port even if it's already in use (default: false)
 - `stata-vscode.clineConfigPath`: Custom path to Cline configuration file (optional, defaults to standard locations)
 - `stata-vscode.runFileTimeout`: Timeout in seconds for 'Run File' operations (default: 600 seconds / 10 minutes)
+- `stata-vscode.stataEdition`: Stata edition to use (MP, SE, IC) - default: MP
 
 ## Usage
 
@@ -115,6 +117,7 @@ You can customize the extension behavior through VS Code settings:
    - **Run Selection**: Select Stata code and press `Ctrl+Shift+Enter` (or `Cmd+Shift+Enter` on Mac)
    - **Run File**: Press `Ctrl+Shift+D` (or `Cmd+Shift+D` on Mac) to run the entire .do file
 3. View output in the editor panel
+4. **Choose Stata Edition**: Select your preferred Stata edition (MP, SE, or IC) in the extension settings
 
 ## How It Works
 
@@ -390,6 +393,11 @@ If you encounter issues with the extension, follow these steps to perform a clea
   2. Verify UV installation: `uv --version`
   3. Make sure you have Python 3.11 or later installed
   4. Check if your antivirus software is blocking Python or UV executables
+
+- If you're having issues with a specific Stata edition:
+  1. Make sure the selected Stata edition (MP, SE, or IC) matches what's installed on your system
+  2. Try changing the `stata-vscode.stataEdition` setting to match your installed version
+  3. Restart the extension after changing settings
 
 When opening an issue on GitHub, please provide:
 - The complete error message from the Output panel (View -> Output -> Stata-MCP)

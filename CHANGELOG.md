@@ -1,5 +1,16 @@
 # Changelog
 
+## Version 0.2.3 (2024-07-02)
+- Added ability for users to select their Stata edition (MP, SE, or IC)
+- Enhanced user control with new `stata-vscode.stataEdition` setting
+- Improved documentation for edition-specific configurations
+- Updated troubleshooting guidance for Stata edition selection
+
+## Version 0.2.2 (2024-07-01)
+- Updated README with higher resolution demonstration GIF at 2x speed
+- Improved visual documentation for better user understanding
+- Enhanced installation instructions for clarity
+
 ## Version 0.2.1 (2024-06-31)
 - Added official extension logo
 - Significantly reduced package size (from 170MB to 4.7MB)
