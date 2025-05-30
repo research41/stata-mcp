@@ -16,6 +16,10 @@ __pycache__/
 .setup-complete
 .specstory/
 
+# Local development files (keep local, exclude from GitHub)
+.cursorindexingignore
+package-lock.json
+
 # Build outputs
 dist/
 out/
