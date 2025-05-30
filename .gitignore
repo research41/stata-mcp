@@ -15,6 +15,12 @@ dist/
 out/
 *.tsbuildinfo
 
+# Large media files
+*.mov
+*.mp4
+*.avi
+*.mkv
+
 # Developer files
 .vscode-test/
 scripts/

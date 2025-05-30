@@ -1,5 +1,11 @@
 # Changelog
 
+## Version 0.2.4 (2024-12-18)
+- Implemented more robust MCP server setups and connection handling
+- Enhanced Stata path detection with improved support for Stata 19
+- Improved server stability and error recovery mechanisms
+- Better handling of Stata installation discovery across different versions
+
 ## Version 0.2.3 (2024-07-02)
 - Added ability for users to select their Stata edition (MP, SE, or IC)
 - Enhanced user control with new `stata-vscode.stataEdition` setting
