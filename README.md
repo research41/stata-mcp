@@ -37,7 +37,7 @@ Watch how this extension enhances your Stata workflow with Cursor (or VS Code) a
 > **Looking for other Stata integrations?**
 > - Use Stata with Notepad++ and Sublime Text 3? See [here](https://github.com/sook-tusk/Tech_Integrate_Stata_R_with_Editors)
 > - Use Stata MCP in Claude Desktop without installing this extension? See [here](https://github.com/SepineTam/stata-mcp)
-> - Use Stata via Jupyter? See [here](https://github.com/hanlulong/stata-mcp/blob/main/jupyter-stata.md)
+> - Use Stata via Jupyter? See [here](https://github.com/hanlulong/stata-mcp/blob/main/docs/jupyter-stata.md)
 
 
 ## Requirements
