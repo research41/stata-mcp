@@ -1,9 +1,9 @@
 # Stata MCP Extension for VS Code and Cursor
 
 [![VS Code Marketplace](https://img.shields.io/badge/VS%20Code-Marketplace-blue)](https://marketplace.visualstudio.com/items?itemName=DeepEcon.stata-mcp)
-[![GitHub license](https://img.shields.io/github/license/hanlulong/stata-mcp)](https://github.com/hanlulong/stata-mcp/blob/main/LICENSE) 
-![VS Code Marketplace](https://img.shields.io/visual-studio-marketplace/i/hanlulong.stata-mcp)
+![VS Code Marketplace](https://img.shields.io/visual-studio-marketplace/i/deepecon.stata-mcp)
 ![GitHub all releases](https://img.shields.io/github/downloads/hanlulong/stata-mcp/total.svg)
+[![GitHub license](https://img.shields.io/github/license/hanlulong/stata-mcp)](https://github.com/hanlulong/stata-mcp/blob/main/LICENSE) 
 
 
 This extension provides Stata integration for Visual Studio Code and Cursor IDE using the Model Context Protocol (MCP). The extension allows you to:
