@@ -28,8 +28,6 @@ out/
 
 # Developer files
 .vscode-test/
-scripts/
-src/
 webpack.config.js
 tsconfig.json
 .eslintrc.json
