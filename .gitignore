@@ -35,6 +35,7 @@ tsconfig.json
 # Temporary files
 tmp/
 .DS_Store
+**/.DS_Store
 workflow_logs.zip
 github_logs.txt
 *.log

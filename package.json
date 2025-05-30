@@ -174,14 +174,14 @@
 					"STATA",
 					"stata"
 				],
-				"configuration": "./language-configuration.json"
+				"configuration": "./src/language-configuration.json"
 			}
 		],
 		"grammars": [
 			{
 				"language": "stata",
 				"scopeName": "source.stata",
-				"path": "./syntaxes/stata.tmLanguage.json"
+				"path": "./src/syntaxes/stata.tmLanguage.json"
 			}
 		]
 	},

@@ -2,6 +2,11 @@
 .vscode-test/**
 out/**
 node_modules/**
+src/**
+!src/stata_mcp_server.py
+!src/requirements.txt
+!src/language-configuration.json
+!src/syntaxes/
 .gitignore
 webpack.config.js
 *.vsix
