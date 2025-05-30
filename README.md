@@ -414,6 +414,10 @@ When opening an issue on GitHub, please provide:
 
 This detailed information will help us identify and fix the issue more quickly. You can open issues at: [GitHub Issues](https://github.com/hanlulong/stata-mcp/issues)
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=hanlulong/stata-mcp&type=Date)](https://star-history.com/#hanlulong/stata-mcp&Date)
+
 ## License
 
 MIT
