@@ -4,4 +4,16 @@
 
 # Exclude specific folders from language statistics
 examples/* linguist-vendored
-.github/* linguist-vendored 
+.github/* linguist-vendored
+
+# Exclude documentation from language statistics
+docs/* linguist-documentation
+archive/* linguist-documentation
+
+# Mark configuration files
+*.json linguist-language=JSON
+*.md linguist-documentation
+webpack.config.js linguist-language=JavaScript
+
+# Ensure Python files are properly detected
+*.py linguist-language=Python 

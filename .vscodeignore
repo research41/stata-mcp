@@ -8,7 +8,7 @@ src/**
 !src/language-configuration.json
 !src/syntaxes/
 .gitignore
-webpack.config.js
+config/**
 *.vsix
 **/.DS_Store
 .cursor/**

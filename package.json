@@ -188,7 +188,7 @@
 	"scripts": {
 		"start-mcp-server": "node ./src/start-server.js --port 4000 --force-port",
 		"postinstall": "node ./src/check-python.js",
-		"webpack": "webpack --config webpack.config.js",
+		"webpack": "webpack --config config/webpack.config.js",
 		"watch": "webpack --watch",
 		"package": "npm run webpack && vsce package --allow-star-activation",
 		"compile": "npm run webpack",
