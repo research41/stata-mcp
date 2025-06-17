@@ -3,7 +3,7 @@
 	"displayName": "Stata MCP",
 	"description": "Stata MCP Extension for VS Code and Cursor IDE",
 	"publisher": "DeepEcon",
-	"version": "0.2.4",
+	"version": "0.2.5",
 	"icon": "images/Stata_MCP_logo_400x400.png",
 	"engines": {
 		"vscode": "^1.75.0"
@@ -154,9 +154,20 @@
 				},
 				"stata-vscode.stataEdition": {
 					"type": "string",
-					"enum": ["mp", "se", "ic"],
+					"enum": ["mp", "se", "be"],
 					"default": "mp",
-					"description": "Stata edition to use (MP, SE, IC) - default: MP"
+					"description": "Stata edition to use (MP, SE, BE) - default: MP"
+				},
+				"stata-vscode.logFileLocation": {
+					"type": "string",
+					"enum": ["extension", "workspace", "custom"],
+					"default": "extension",
+					"description": "Location for Stata log files: 'extension' (logs folder in extension directory), 'workspace' (same directory as .do file), or 'custom' (user-specified directory)"
+				},
+				"stata-vscode.customLogDirectory": {
+					"type": "string",
+					"default": "",
+					"description": "Custom directory for Stata log files (only used when logFileLocation is set to 'custom')"
 				}
 			}
 		},

@@ -5,6 +5,8 @@ node_modules/**
 src/**
 !src/stata_mcp_server.py
 !src/requirements.txt
+!src/check-python.js
+!src/start-server.js
 !src/language-configuration.json
 !src/syntaxes/
 .gitignore

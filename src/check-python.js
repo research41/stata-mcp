@@ -375,7 +375,7 @@ async function setupPythonWithUv() {
         console.log('Successfully created Python virtual environment with uv');
         
         // Install dependencies using uv instead of pip
-        const requirementsPath = path.join(extensionDir, 'requirements.txt');
+        const requirementsPath = path.join(extensionDir, 'src', 'requirements.txt');
         if (fs.existsSync(requirementsPath)) {
             console.log('Installing Python dependencies using uv...');
             

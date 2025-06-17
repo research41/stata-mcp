@@ -379,7 +379,7 @@ function checkActiveEditorIsStata(editor) {
 
 // Install Python dependencies
 function installDependencies() {
-    const checkPythonScriptPath = FileUtils.getExtensionFilePath('scripts/check-python.js');
+    const checkPythonScriptPath = FileUtils.getExtensionFilePath('src/check-python.js');
     Logger.info('Setting up Python environment...');
     
     try {
@@ -441,8 +441,11 @@ async function startMcpServer() {
     // Get Stata path and edition
     let stataPath = config.get('stataPath');
     const stataEdition = config.get('stataEdition') || 'mp';
+    const logFileLocation = config.get('logFileLocation') || 'extension';
+    const customLogDirectory = config.get('customLogDirectory') || '';
     
     Logger.info(`Using Stata edition: ${stataEdition}`);
+    Logger.info(`Log file location: ${logFileLocation}`);
     
     if (!stataPath) {
         stataPath = await detectStataPath();
@@ -510,8 +513,8 @@ async function startMcpServer() {
         
         // Find server script
         const possibleServerPaths = [
-            FileUtils.getExtensionFilePath('stata_mcp_server.py'),
-            FileUtils.getExtensionFilePath('scripts/stata_mcp_server.py')
+            FileUtils.getExtensionFilePath('src/stata_mcp_server.py'),
+            FileUtils.getExtensionFilePath('stata_mcp_server.py')
         ];
         
         let mcpServerPath = null;
@@ -561,7 +564,26 @@ async function startMcpServer() {
         }
 
         const pythonCommand = PythonUtils.getPythonCommand();
-        const logFile = FileUtils.getExtensionFilePath(FILE_PATHS.LOG_FILE);
+        
+        // Determine log file path based on user preference
+        let logFile;
+        if (logFileLocation === 'extension') {
+            // Create logs directory if it doesn't exist
+            const logsDir = FileUtils.getExtensionFilePath('logs');
+            if (!FileUtils.checkFileExists(logsDir)) {
+                try {
+                    require('fs').mkdirSync(logsDir, { recursive: true });
+                    Logger.info(`Created logs directory: ${logsDir}`);
+                } catch (error) {
+                    Logger.error(`Failed to create logs directory: ${error.message}`);
+                }
+            }
+            logFile = path.join(logsDir, FILE_PATHS.LOG_FILE);
+        } else {
+            // For workspace and custom, we'll use the default for server log, 
+            // but the do file logs will be handled by the server based on settings
+            logFile = FileUtils.getExtensionFilePath(FILE_PATHS.LOG_FILE);
+        }
         
         // Get log level based on debug mode setting
         const logLevel = debugMode ? 'DEBUG' : 'INFO';
@@ -577,6 +599,8 @@ async function startMcpServer() {
             if (forcePort) cmdString += ' --force-port';
             if (stataPath) cmdString += ` --stata-path "${stataPath}"`;
             cmdString += ` --log-file "${logFile}" --stata-edition ${stataEdition} --log-level ${logLevel}`;
+            cmdString += ` --log-file-location ${logFileLocation}`;
+            if (customLogDirectory) cmdString += ` --custom-log-directory "${customLogDirectory}"`;
             
             Logger.info(`Starting server with command: ${cmdString}`);
             
@@ -587,6 +611,8 @@ async function startMcpServer() {
             if (forcePort) args.push('--force-port');
             if (stataPath) args.push('--stata-path', stataPath);
             args.push('--log-file', logFile, '--stata-edition', stataEdition, '--log-level', logLevel);
+            args.push('--log-file-location', logFileLocation);
+            if (customLogDirectory) args.push('--custom-log-directory', customLogDirectory);
             
             cmdString = `${pythonCommand} ${args.join(' ')}`;
             Logger.info(`Starting server with command: ${cmdString}`);

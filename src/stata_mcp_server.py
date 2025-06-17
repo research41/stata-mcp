@@ -88,6 +88,10 @@ stata_banner_displayed = False
 command_history = []
 # Store the current Stata edition
 stata_edition = 'mp'  # Default to MP edition
+# Store log file settings
+log_file_location = 'extension'  # Default to extension directory
+custom_log_directory = ''  # Custom log directory
+extension_path = None  # Path to the extension directory
 
 # Try to import pandas
 try:
@@ -246,6 +250,35 @@ def try_init_stata(stata_path):
 
 # Lock file mechanism removed - VS Code/Cursor handles extension instances properly
 # If there are port conflicts, the server will fail to start cleanly
+
+def get_log_file_path(do_file_path, do_file_base):
+    """Get the appropriate log file path based on user settings"""
+    global log_file_location, custom_log_directory, extension_path
+    
+    if log_file_location == 'extension':
+        # Use logs folder in extension directory
+        if extension_path:
+            logs_dir = os.path.join(extension_path, 'logs')
+            # Create logs directory if it doesn't exist
+            os.makedirs(logs_dir, exist_ok=True)
+            return os.path.join(logs_dir, f"{do_file_base}_mcp.log")
+        else:
+            # Fallback to workspace if extension path is not available
+            do_file_dir = os.path.dirname(do_file_path)
+            return os.path.join(do_file_dir, f"{do_file_base}_mcp.log")
+    elif log_file_location == 'custom':
+        # Use custom directory
+        if custom_log_directory and os.path.exists(custom_log_directory):
+            return os.path.join(custom_log_directory, f"{do_file_base}_mcp.log")
+        else:
+            # Fallback to workspace if custom directory is invalid
+            logging.warning(f"Custom log directory not valid: {custom_log_directory}, falling back to workspace")
+            do_file_dir = os.path.dirname(do_file_path)
+            return os.path.join(do_file_dir, f"{do_file_base}_mcp.log")
+    else:  # workspace
+        # Use same directory as .do file (original behavior)
+        do_file_dir = os.path.dirname(do_file_path)
+        return os.path.join(do_file_dir, f"{do_file_base}_mcp.log")
 
 def get_stata_path():
     """Get the Stata executable path based on the platform and configured path"""
@@ -661,8 +694,8 @@ def run_stata_file(file_path: str, timeout=600):
         do_file_name = os.path.basename(file_path)
         do_file_base = os.path.splitext(do_file_name)[0]
         
-        # Create a custom log file path in the same directory as the do file
-        custom_log_file = os.path.join(do_file_dir, f"{do_file_base}_mcp.log")
+        # Create a custom log file path based on user settings
+        custom_log_file = get_log_file_path(file_path, do_file_base)
         logging.info(f"Will save log to: {custom_log_file}")
         
         # Read the do file content
@@ -1243,8 +1276,12 @@ def main():
                           default='INFO', help='Logging level')
         parser.add_argument('--force-port', action='store_true', help='Force the specified port, even if it requires killing processes')
         parser.add_argument('--log-file', type=str, help='Path to log file (default: stata_mcp_server.log in current directory)')
-        parser.add_argument('--stata-edition', type=str, choices=['mp', 'se', 'ic'], default='mp', 
-                          help='Stata edition to use (mp, se, ic) - default: mp')
+        parser.add_argument('--stata-edition', type=str, choices=['mp', 'se', 'be'], default='mp', 
+                          help='Stata edition to use (mp, se, be) - default: mp')
+        parser.add_argument('--log-file-location', type=str, choices=['extension', 'workspace', 'custom'], default='extension',
+                          help='Location for .do file logs (extension, workspace, custom) - default: extension')
+        parser.add_argument('--custom-log-directory', type=str, default='',
+                          help='Custom directory for .do file logs (when location is custom)')
         
         # Special handling when running as a module
         if is_running_as_module:
@@ -1376,9 +1413,26 @@ def main():
         logging.getLogger().setLevel(log_level)
         
         # Set Stata edition
-        global stata_edition
+        global stata_edition, log_file_location, custom_log_directory, extension_path
         stata_edition = args.stata_edition.lower()
+        log_file_location = args.log_file_location
+        custom_log_directory = args.custom_log_directory
+        
+        # Try to determine extension path from the log file path
+        if args.log_file:
+            # If log file is in a logs subdirectory, the parent of that is the extension path
+            log_file_dir = os.path.dirname(os.path.abspath(args.log_file))
+            if log_file_dir.endswith('logs'):
+                extension_path = os.path.dirname(log_file_dir)
+            else:
+                extension_path = log_file_dir
+        
         logging.info(f"Using Stata {stata_edition.upper()} edition")
+        logging.info(f"Log file location setting: {log_file_location}")
+        if custom_log_directory:
+            logging.info(f"Custom log directory: {custom_log_directory}")
+        if extension_path:
+            logging.info(f"Extension path: {extension_path}")
         
         # Log startup information
         logging.info(f"Log initialized at {os.path.abspath(log_file)}")

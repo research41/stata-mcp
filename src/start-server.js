@@ -20,6 +20,8 @@ const options = {
     forcePort: false, // Don't force port by default
     logFile: null,    // Add log file option
     stataEdition: 'mp', // Default Stata edition is MP
+    logFileLocation: 'extension', // Default log file location
+    customLogDirectory: null, // Custom log directory
 };
 
 // Parse command line arguments
@@ -37,6 +39,10 @@ process.argv.slice(2).forEach((arg, i, argv) => {
     } else if (arg === '--stata-edition' && argv[i + 1]) {
         options.stataEdition = argv[i + 1].toLowerCase();
         console.log(`Setting Stata edition to: ${options.stataEdition}`);
+    } else if (arg === '--log-file-location' && argv[i + 1]) {
+        options.logFileLocation = argv[i + 1];
+    } else if (arg === '--custom-log-directory' && argv[i + 1]) {
+        options.customLogDirectory = argv[i + 1];
     } else if (arg === '--force-port') {
         options.forcePort = true;
     } else if (arg === '--help') {
@@ -47,9 +53,11 @@ Options:
   --port PORT           Port to run the server on (default: 4000)
   --host HOST           Host to bind to (default: localhost)
   --stata-path PATH     Path to Stata installation
-  --stata-edition EDITION Stata edition to use (mp, se, ic) - default: mp
+  --stata-edition EDITION Stata edition to use (mp, se, be) - default: mp
   --log-level LEVEL     Log level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
   --log-file FILE       Log file path
+  --log-file-location LOCATION Location for .do file logs (extension, workspace, custom) - default: extension
+  --custom-log-directory DIR Custom directory for logs (when location is custom)
   --force-port          Force the specified port, killing any process using it
   --help                Show this help message
         `);

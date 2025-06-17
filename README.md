@@ -13,7 +13,7 @@ This extension provides Stata integration for Visual Studio Code and Cursor IDE 
 - View Stata output in the editor in real-time
 - Get AI assistant integration through the MCP protocol
 - Experience enhanced AI coding with Cursor or Cline
-- Choose your Stata edition (MP, SE, or IC)
+- Choose your Stata edition (MP, SE, or BE)
 
 ## Features
 
@@ -111,7 +111,9 @@ You can customize the extension behavior through VS Code settings:
 - `stata-vscode.forcePort`: Force the MCP server to use the specified port even if it's already in use (default: false)
 - `stata-vscode.clineConfigPath`: Custom path to Cline configuration file (optional, defaults to standard locations)
 - `stata-vscode.runFileTimeout`: Timeout in seconds for 'Run File' operations (default: 600 seconds / 10 minutes)
-- `stata-vscode.stataEdition`: Stata edition to use (MP, SE, IC) - default: MP
+- `stata-vscode.stataEdition`: Stata edition to use (MP, SE, BE) - default: MP
+- `stata-vscode.logFileLocation`: Location for Stata log files - 'extension' (logs folder in extension directory), 'workspace' (same directory as .do file), or 'custom' (user-specified directory) - default: extension
+- `stata-vscode.customLogDirectory`: Custom directory for Stata log files (only used when logFileLocation is set to 'custom')
 
 ## Usage
 
@@ -120,7 +122,21 @@ You can customize the extension behavior through VS Code settings:
    - **Run Selection**: Select Stata code and press `Ctrl+Shift+Enter` (or `Cmd+Shift+Enter` on Mac)
    - **Run File**: Press `Ctrl+Shift+D` (or `Cmd+Shift+D` on Mac) to run the entire .do file
 3. View output in the editor panel
-4. **Choose Stata Edition**: Select your preferred Stata edition (MP, SE, or IC) in the extension settings
+4. **Choose Stata Edition**: Select your preferred Stata edition (MP, SE, or BE) in the extension settings
+
+## Log File Management
+
+The extension automatically creates log files when running Stata .do files. You can control where these log files are saved:
+
+1. **Extension Directory** (default): Log files are saved in a `logs` folder within the extension directory, keeping your workspace clean
+2. **Workspace Directory**: Log files are saved in the same directory as your .do file (original behavior)
+3. **Custom Directory**: Log files are saved to a directory you specify
+
+To change this setting:
+1. Open VS Code/Cursor settings
+2. Search for "Stata MCP"
+3. Find "Log File Location" and select your preferred option
+4. If using "Custom Directory", also set the "Custom Log Directory" path
 
 ## How It Works
 
@@ -398,7 +414,7 @@ If you encounter issues with the extension, follow these steps to perform a clea
   4. Check if your antivirus software is blocking Python or UV executables
 
 - If you're having issues with a specific Stata edition:
-  1. Make sure the selected Stata edition (MP, SE, or IC) matches what's installed on your system
+  1. Make sure the selected Stata edition (MP, SE, or BE) matches what's installed on your system
   2. Try changing the `stata-vscode.stataEdition` setting to match your installed version
   3. Restart the extension after changing settings
 
