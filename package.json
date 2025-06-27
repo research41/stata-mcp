@@ -28,6 +28,7 @@
 	"activationEvents": [
 		"onLanguage:stata",
 		"onCommand:stata-vscode.runSelection",
+		"onCommand:stata-vscode.runSelection2",
 		"onCommand:stata-vscode.runFile",
 		"onCommand:stata-vscode.testMcpServer",
 		"onStartupFinished"
@@ -38,6 +39,11 @@
 			{
 				"command": "stata-vscode.runSelection",
 				"title": "Stata: Run Selection/Current Line",
+				"icon": "$(play)"
+			},
+			{
+				"command": "stata-vscode.runSelection2",
+				"title": "Stata: Run Selection/Current Line with vsbrowse",
 				"icon": "$(play)"
 			},
 			{
@@ -63,6 +69,11 @@
 				},
 				{
 					"when": "resourceExtname == .do || resourceExtname == .ado || resourceExtname == .mata || editorLangId == stata",
+					"command": "stata-vscode.runSelection2",
+					"group": "navigation"
+				},
+				{
+					"when": "resourceExtname == .do || resourceExtname == .ado || resourceExtname == .mata || editorLangId == stata",
 					"command": "stata-vscode.runFile",
 					"group": "navigation"
 				}
@@ -71,6 +82,11 @@
 				{
 					"when": "resourceExtname == .do || resourceExtname == .ado || resourceExtname == .mata || editorLangId == stata",
 					"command": "stata-vscode.runSelection",
+					"group": "1_stata"
+				},
+				{
+					"when": "resourceExtname == .do || resourceExtname == .ado || resourceExtname == .mata || editorLangId == stata",
+					"command": "stata-vscode.runSelection2",
 					"group": "1_stata"
 				},
 				{
@@ -85,6 +101,12 @@
 				"command": "stata-vscode.runSelection",
 				"key": "ctrl+shift+enter",
 				"mac": "cmd+shift+enter",
+				"when": "editorTextFocus && (editorLangId == stata || resourceExtname == .do || resourceExtname == .ado || resourceExtname == .mata)"
+			},
+			{
+				"command": "stata-vscode.runSelection2",
+				"key": "ctrl+alt+enter",
+				"mac": "cmd+alt+enter",
 				"when": "editorTextFocus && (editorLangId == stata || resourceExtname == .do || resourceExtname == .ado || resourceExtname == .mata)"
 			},
 			{
