@@ -255,6 +255,7 @@ function activate(context) {
     // Register commands
     context.subscriptions.push(
         vscode.commands.registerCommand('stata-vscode.runSelection', runSelection),
+        vscode.commands.registerCommand('stata-vscode.runSelection2', runSelection2),  // 新增注册runselection2
         vscode.commands.registerCommand('stata-vscode.runFile', runFile),
         vscode.commands.registerCommand('stata-vscode.showOutput', showOutput),
         vscode.commands.registerCommand('stata-vscode.showOutputWebview', showStataOutputWebview),
@@ -728,6 +729,38 @@ async function runSelection() {
     }
     
     await executeStataCode(text, 'run_selection');
+}
+
+// 新增的runSelection2函数 - 在执行selection后自动添加进一个vsbrowse命令
+// 目的是每次执行stata:run selection后都可以自动用pandasgui来browse工作数据集
+async function runSelection2() {
+    const editor = vscode.window.activeTextEditor;
+    if (!editor) {
+        vscode.window.showErrorMessage('No active editor');
+        return;
+    }
+    
+    const selection = editor.selection;
+    let text;
+    
+    if (selection.isEmpty) {
+        const line = editor.document.lineAt(selection.active.line);
+        text = line.text;
+    } else {
+        text = editor.document.getText(selection);
+    }
+    
+    if (!text.trim()) {
+        vscode.window.showErrorMessage('No text selected or current line is empty');
+        return;
+    }
+    
+    // 在原始selection内容后添加vsbrowse命令
+    const enhancedText = text.trim() + '\nvsbrowse';
+    
+    Logger.info(`Enhanced selection with vsbrowse command: ${enhancedText}`);
+    
+    await executeStataCode(enhancedText, 'run_selection');
 }
 
 async function runFile() {
